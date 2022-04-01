@@ -3,7 +3,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
-        sudo \
         binutils \
         ufw \
         xrdp \
