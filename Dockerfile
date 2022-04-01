@@ -26,20 +26,20 @@ RUN apt-get update \
     && apt install -qqy --no-install-recommends ./google-chrome-stable_current_amd64.deb \
     && apt-get autoclean \
     && apt-get autoremove \
-    && rm -rf /var/lib/apt/lists/* /var/cache/apt/* 
-RUN wget -c https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.6/fahclient_7.6.21_amd64.deb \
-    && wget -c https://download.foldingathome.org/releases/public/release/fahcontrol/debian-stable-64bit/v7.6/fahcontrol_7.6.21-1_all.deb 
-RUN ar vx fahclient_7.6.21_amd64.deb
-RUN tar -xvf control.tar.xz
-RUN tar -xvf data.tar.xz
-RUN dpkg -i --force-depends fahclient_7.6.21_amd64.deb
-RUN dpkg -i --force-depends fahcontrol_7.6.21-1_all.deb
+    && rm -rf /var/lib/apt/lists/* /var/cache/apt/* \
+    && wget -c https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v7.6/fahclient_7.6.21_amd64.deb \
+    && wget -c https://download.foldingathome.org/releases/public/release/fahcontrol/debian-stable-64bit/v7.6/fahcontrol_7.6.21-1_all.deb \
+    && ar vx fahclient_7.6.21_amd64.deb \
+    && tar -xvf control.tar.xz \
+    && tar -xvf data.tar.xz \
+    && dpkg -i --force-depends fahclient_7.6.21_amd64.deb \
+    && dpkg -i --force-depends fahcontrol_7.6.21-1_all.deb
 # COPY conf.d/* /etc/supervisor/conf.d/
 #============================
 # GUI
 #============================
 FROM ubuntu-utilities as ubuntu-ui
-RUN ufw enable -y
+RUN ufw enable
 RUN sed -i.bak '/fi/a #xrdp multiple users configuration \n xfce-session \n' /etc/xrdp/startwm.sh
 RUN adduser xrdp ssl-cert
 RUN ufw allow 3389/tcp
