@@ -3,6 +3,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
+        sudo \
         binutils \
         iptables \
         xrdp \
@@ -41,7 +42,7 @@ RUN apt-get update \
 FROM ubuntu-utilities as ubuntu-ui
 RUN sed -i.bak '/fi/a #xrdp multiple users configuration \n xfce-session \n' /etc/xrdp/startwm.sh
 RUN adduser xrdp ssl-cert
-RUN iptables -A INPUT -p tcp --dport 3389 -j ACCEPT \
-    && netfilter-persistent save \
-    && netfilter-persistent reload
+RUN sudo iptables -A INPUT -p tcp --dport 3389 -j ACCEPT \
+    && sudo netfilter-persistent save \
+    && sudo netfilter-persistent reload
 RUN /etc/init.d/xrdp restart
