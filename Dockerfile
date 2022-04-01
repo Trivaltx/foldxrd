@@ -3,9 +3,9 @@ ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
+        ufw \
         binutils \
         sudo \
-        ufw \
         xrdp \
         xfce4 \
         xz-utils \
@@ -43,6 +43,5 @@ FROM ubuntu-utilities as ubuntu-ui
 RUN sudo su \
     && sed -i.bak '/fi/a #xrdp multiple users configuration \n xfce-session \n' /etc/xrdp/startwm.sh \
     && adduser xrdp ssl-cert \
-    && ufw status \
     && ufw allow 3389/tcp \
     && /etc/init.d/xrdp restart
