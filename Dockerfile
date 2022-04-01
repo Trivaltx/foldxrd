@@ -10,14 +10,8 @@ RUN apt-get -qqy update \
         xrdp \
         xfce4 \
         xz-utils \
-        nano \
-        sudo \
         gdebi \
         python-gtk2 \
-        zip \
-        unzip \
-        ssh \
-        npm \
         wget \
         xfce4-terminal \
     && apt-get autoclean \
@@ -35,7 +29,7 @@ FROM ubuntu-base as ubuntu-utilities
 RUN apt-get update \
     && apt install unzip \
     && dpkg --configure -a \
-    && wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && wget --no-check-certificate https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
     && apt install -qqy --no-install-recommends ./google-chrome-stable_current_amd64.deb \
     && apt-get autoclean \
     && apt-get autoremove \
