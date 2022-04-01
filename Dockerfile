@@ -4,6 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
         binutils \
+        Iptables \
         xrdp \
         xfce4 \
         xz-utils \
