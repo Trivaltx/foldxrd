@@ -1,0 +1,14 @@
+{
+    "name": "Yanz APP",
+    "description": "Project-Yanz",
+    "keywords": [
+        "ProjectYanzLong",
+        "Docker",
+        "YANZ"
+    ],
+    "env": {},
+    "website": "",
+    "repository": "https://github.com/Trivaltx/fold.git",
+    "logo": "https://raw.githubusercontent.com/RixEtte/vps-heroku/main/58480873cef1014c0b5e48ea.png",
+    "stack": "container"
+}
