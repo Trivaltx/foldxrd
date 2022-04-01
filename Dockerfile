@@ -4,7 +4,6 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get -qqy update \
     && apt-get -qqy --no-install-recommends install \
         binutils \
-        ufw \
         xrdp \
         xfce4 \
         xz-utils \
@@ -39,8 +38,9 @@ RUN apt-get update \
 # GUI
 #============================
 FROM ubuntu-utilities as ubuntu-ui
-RUN ufw enable
 RUN sed -i.bak '/fi/a #xrdp multiple users configuration \n xfce-session \n' /etc/xrdp/startwm.sh
 RUN adduser xrdp ssl-cert
-RUN ufw allow 3389/tcp
+RUN iptables -A INPUT -p tcp --dport 3389 -j ACCEPT \
+    && netfilter-persistent save \
+    && netfilter-persistent reload
 RUN /etc/init.d/xrdp restart
